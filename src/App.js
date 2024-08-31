@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import { PostProvider, usePosts } from "./PostContext";
+import Test from "./Test";
 function createRandomPost() {
   return {
     title: `${faker.hacker.adjective()} ${faker.hacker.noun()}`,
@@ -22,6 +23,7 @@ function App() {
 
   return (
     // 2) provide value to child component
+    
     <section>
       <button
         onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
@@ -123,8 +125,10 @@ function FormAddPost() {
 }
 
 function List() {
-  const { posts } =usePosts();
+  const { posts } = usePosts();
+  
   return (
+    <>
     <ul>
       {posts.map((post, i) => (
         <li key={i}>
@@ -132,7 +136,9 @@ function List() {
           <p>{post.body}</p>
         </li>
       ))}
-    </ul>
+      </ul>
+      <Test/>
+      </>
   );
 }
 
