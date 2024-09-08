@@ -58,11 +58,3 @@ The Atomic Blog is a simple blog application built with React, using context and
 ## Performance Note
 
 The `Archive` component generates a large list of posts (10,000 by default) to demonstrate performance considerations in React. You can reduce the number of generated posts by modifying the length of the array in the `Archive` component if the application becomes slow.
-
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-This README provides an overview of the project, how to set it up, and what features are available, along with usage instructions and a note on performance considerations.
