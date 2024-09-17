@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { faker } from "@faker-js/faker";
 
 function createRandomPost() {
@@ -35,7 +35,7 @@ function App() {
 
   // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the
   // HTML element(see in "Elements" dev tool).
-  
+
   useEffect(
     function () {
       document.documentElement.classList.toggle("fake-dark-mode");
@@ -43,10 +43,12 @@ function App() {
     [isFakeDark]
   );
 
-  const archiveOptions = {
-    show: false,
-    title: "Post archive n addition to main posts",
-  }
+  const archiveOptions = useMemo(() => {
+    return {
+      show: false,
+      title: `Post archive n addition to ${posts.length} main posts`,
+    };
+  }, [posts.length]);
 
   return (
     <section>
@@ -196,7 +198,7 @@ const Archive = memo(function Archive({ archiveOptions }) {
       )}
     </aside>
   );
-})
+});
 
 function Footer() {
   return <footer>&copy; by The Atomic Blog ✌️</footer>;
